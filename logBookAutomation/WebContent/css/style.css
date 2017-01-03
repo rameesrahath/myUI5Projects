@@ -1,0 +1,14 @@
+/* Enter your custom styles here */
+.sapUxAPObjectPageHeaderContentItem {
+    width: 100%;
+}
+#S2--idProcessLossTable-triggerList
+{
+	display:none;
+}
+.sap-desktop .calclass {
+    left: 2em;
+}
+.sap-phone .calclass {
+    left: -1em;
+}

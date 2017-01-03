@@ -1,0 +1,48 @@
+<mvc:View 
+		 xmlns:html="http://www.w3.org/1999/xhtml" 
+		 xmlns:mvc="sap.ui.core.mvc" 
+		 xmlns="sap.m"
+		 xmlns:c="sap.ui.core" 
+		 controllerName="com.ceat.logbookauto.controller.initialView">
+
+			<Page title="{i18n>logbookInitialScreenTitle}" showFooter="true">
+				<content>
+				    <ObjectHeader id="plantDateObjHeader" backgroundDesign="Transparent" icon="sap-icon://factory" titleSelectorTooltip="" tooltip="Plant Info" introTextDirection="LTR" title="{plantmodel>/0/Name1}" intro="{path:'datemodel>/0/Sdate',
+									formatter:'com.ceat.logbookauto.util.Formatter.dateFormatter'}" introActive="true" introPress="introPressforDate" fullScreenOptimized="true" condensed="true" responsive="true" iconAlt="sap-icon://factory"/>
+				    <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form1" backgroundDesign="Solid" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				            <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="initialForm" level="H4" icon="sap-icon://activity-items" text="General Info"/>
+				            <Label text="Department" id="__label2"/>
+				            <ComboBox 
+				            		 id="initScreenDeptCombo"
+				            		 selectionChange="deptChange"
+			              		     items="{
+												path: 'departmentmodel>/results',
+												sorter: { path: '' }
+										    }">
+									<c:Item key="{departmentmodel>Stand}" text="{departmentmodel>Ktext}" />
+				            </ComboBox>
+				            <Label text="Shift" id="__label3"/>
+				            <ComboBox 
+				                     id="initScreenShiftCombo"
+				                     selectionChange="shiftChange"
+				                     
+			              		     items="{
+									            path:'shiftmodel>/results',
+												sorter: { path: '' }
+										    }">
+									 <c:Item key="{shiftmodel>Stime}" text="{shiftmodel>Etime}" />
+				            </ComboBox>
+				            </sap.ui.layout.form:content>
+				    </sap.ui.layout.form:SimpleForm>
+				</content>
+				<footer>
+	      			<Bar design="Footer">
+				        <contentRight>
+				           <Button id="submitinitial" type="Accept" text="{i18n>submit}" press="onLogbookViewPress" icon="sap-icon://activity-2" activeIcon="sap-icon://activity-2"/>
+				        </contentRight>
+				   </Bar>
+	   		</footer>
+			</Page>
+		
+</mvc:View>

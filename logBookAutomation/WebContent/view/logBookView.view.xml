@@ -1,0 +1,912 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:layout="sap.ui.layout" controllerName="com.ceat.logbookauto.controller.logBookView">
+	
+	<m:Page title="{i18n>logbookInitialScreenTitle}" showFooter="true" showNavButton="true" navButtonPress="onBackButtonPress">
+				<m:content>
+					
+
+<ObjectPageLayout id="ObjectPageLayout" enableLazyLoading="true">
+		<headerTitle>
+		
+			<!--<ObjectPageHeader objectTitle="Log Book Automation Entry">
+			
+			</ObjectPageHeader>-->
+		</headerTitle>
+			<headerContent>
+					<m:ObjectHeader id="plantDateObjHeaderLogBook" backgroundDesign="Transparent" icon="sap-icon://factory" titleSelectorTooltip="" tooltip="Plant Info" title="{headermodel>/plant}" fullScreenOptimized="true" iconAlt="sap-icon://factory" responsive="true" condensed="true" intro="{headermodel>/shift}" number="{headermodel>/department}"   numberState="Warning">
+
+		</m:ObjectHeader>
+			</headerContent>
+	<!--	<headerContent>
+			<m:ObjectAttribute title="" text=""/>
+		</headerContent>-->
+ 
+		<sections>
+			<ObjectPageSection title="">
+				<subSections>
+					
+					<ObjectPageSubSection title="Manpower Allotment">
+						<blocks>
+						<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form101" backgroundDesign="Solid" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				            <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="manpowerForm" level="H4" icon="sap-icon://activity-items" text="Manpower Allotment"/>
+				            <m:Label text="Permanent Manpower" id="__label02"/>
+				            <m:Input id="inputPermManPower" maxLength="5" type="Number" value="{previouslogmodel>/Pmpwr}">
+				            </m:Input>
+				            				            
+				            <m:Label text="Given" id="__label03"/>
+				            	  <m:Input id="inputGiven" maxLength="5" type="Number" value="{previouslogmodel>/Mpgvn}">
+				            </m:Input>
+				             <m:Label text="Absent" id="__label04"/>
+				            	  <m:Input id="inputAbsent" maxLength="5" type="Number" value="{previouslogmodel>/Mpabs}">
+				            </m:Input>
+				             <m:Label text="Available" id="__label05"/>
+				            	  <m:Input id="inputAvailable" maxLength="5" type="Number" value="{previouslogmodel>/Mpavl}">
+				            </m:Input>
+				             <m:Label text="Received:CAT VIII" id="__label06"/>
+				            	  <m:Input id="inputReceivedCat" maxLength="5" type="Number" value="{previouslogmodel>/Mprct}">
+				            </m:Input>
+				             <m:Label text="Received:Contractual" id="__label07"/>
+				            	  <m:Input id="inputReceivedContra" maxLength="5" type="Number" value="{previouslogmodel>/Mprcn}">
+				            </m:Input>
+				            <m:Label text="Total Utilized" id="__label08"/>
+				            	  <m:Input id="inputTotalUtiliz" maxLength="5" type="Number" value="{previouslogmodel>/Mptot}">
+				            </m:Input>
+				            </sap.ui.layout.form:content> 
+				          
+				            
+				    </sap.ui.layout.form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+					
+				</subSections>
+			</ObjectPageSection>
+ 
+			<ObjectPageSection title="">
+					<subSections>
+					
+					<ObjectPageSubSection title="Plan">
+						<blocks>
+						<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form102" backgroundDesign="Solid" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				            <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="planForm" level="H4" icon="sap-icon://activity-items" text="Plan"/>
+				            <m:Label text="Plan" id="__label09"/>
+				            <m:Input id="inputPlan" type="Text" value="{previouslogmodel>/Lbpln}">
+				            </m:Input>
+				         </sap.ui.layout.form:content> 
+				         </sap.ui.layout.form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+					
+				</subSections>
+			</ObjectPageSection>
+ 
+			<ObjectPageSection title="">
+				<subSections>
+					<ObjectPageSubSection title="Actual">
+						<blocks>
+						<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form103" backgroundDesign="Solid" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				            <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="actualForm" level="H4" icon="sap-icon://activity-items" text="Actual"/>
+				            <m:Label text="Actual" id="__label10"/>
+				            <m:Input id="inputActual" type="Text"  value="{previouslogmodel>/Lbact}" >
+				            </m:Input>
+				         </sap.ui.layout.form:content> 
+				         </sap.ui.layout.form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+ 
+			<ObjectPageSection title="">
+				<subSections>
+					<ObjectPageSubSection title="Pattern Of Operation">
+						<blocks>
+							<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form104" backgroundDesign="Solid" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				            <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="PatterOfOpForm" level="H4" icon="sap-icon://activity-items" text="Pattern Of Operation"/>
+				            <m:Label text="Pattern of Operation" id="__label11"/>
+				            <m:TextArea id="inputPermenentBuilder" type="Text"  value="{previouslogmodel>/Ptopr}">
+				            </m:TextArea>
+				           <!--  <m:Label text="Helpers" id="__label12"/>
+				            <m:Input id="inputHelper" type="Text">
+				            </m:Input>
+				            <m:Label text="Contract Builders" id="__label13"/>
+				            <m:Input id="inputContractBuilder" type="Text">
+				            </m:Input>
+				            <m:Label text="Contract Helpers" id="__label14"/>
+				            <m:Input id="inputContractHelpers" type="Text">
+				            </m:Input>
+				            <m:Label text="Officiatind" id="__label15"/>
+				            <m:Input id="inputOfficiating" type="Text">
+				            </m:Input> -->
+				         </sap.ui.layout.form:content> 
+				         </sap.ui.layout.form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+ 
+			<ObjectPageSection title="Losses">
+				<subSections>
+					<ObjectPageSubSection title="Engineering Losses(Hours)">
+						<blocks>
+				    			
+						<m:Table id="idEngnrngLossTable"
+		inset="false"
+				 >
+		<m:columns>
+						
+			<m:Column hAlign="Center" >
+				<m:Text text="Work Center" />
+			</m:Column>
+			<m:Column hAlign="Center">
+				<m:Text text="Loss Type" />
+			</m:Column>
+			<m:Column hAlign="Center" >
+				<m:Text text="In Hrs" />
+			</m:Column>
+				</m:columns>
+			<m:items>
+			<m:ColumnListItem>
+			<m:cells>		
+			<m:ComboBox 
+			 id="workcenter1cmbox"
+			 selectedKey="{path:'previouslogmodel>/TOELOSS/results/0/Arbpl',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+			 selectionChange=""
+         		   items="{
+					path: 'workcentermodel>/results',
+					sorter: { path: 'Arbpl' }
+					  }">
+			  <core:Item key="{workcentermodel>Arbpl}" text="{workcentermodel>Arbpl}" />
+            </m:ComboBox>
+            <m:ComboBox 
+              id="lossType1cmbox"
+              selectedKey="{path:'previouslogmodel>/TOELOSS/results/0/Lostp',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+              		   selectionChange=""
+              		   items="{
+									path: 'lossmodel>/',
+									sorter: { path: 'key' }
+							  }">
+					   <core:Item key="{lossmodel>key}" text="{lossmodel>value}" />
+            </m:ComboBox>
+						            
+			<m:Input id="input1inhrs" type="Text" maxLength="5" value="{path:'previouslogmodel>/TOELOSS/results/0/Timeh',
+					  												 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}">	</m:Input>	            
+						            
+			 
+				            	            			            
+				</m:cells>
+				</m:ColumnListItem>
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:ComboBox 
+	              id="workcenter2cmbox"
+	              		   selectedKey="{path:'previouslogmodel>/TOELOSS/results/1/Arbpl',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+			 selectionChange=""
+         		   items="{
+					path: 'workcentermodel>/results',
+					sorter: { path: 'Arbpl' }
+					  }">
+			  <core:Item key="{workcentermodel>Arbpl}" text="{workcentermodel>Arbpl}" />
+	            </m:ComboBox>
+						            
+				<m:ComboBox 
+	              id="lossType2cmbox"
+             		   selectionChange=""
+             		    selectedKey="{path:'previouslogmodel>/TOELOSS/results/1/Lostp',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+             		   items="{
+									path: 'lossmodel>/',
+									sorter: { path: 'key' }
+							  }">
+					   <core:Item key="{lossmodel>key}" text="{lossmodel>value}" />
+				     </m:ComboBox>	            
+					  <m:Input id="input2inhrs" type="Text" maxLength="5" value="{path:'previouslogmodel>/TOELOSS/results/1/Timeh',
+					  												 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}">
+				       </m:Input>
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:ComboBox 
+	              id="workcenter3cmbox"
+	              		    selectedKey="{path:'previouslogmodel>/TOELOSS/results/2/Arbpl',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+			 selectionChange=""
+         		   items="{
+					path: 'workcentermodel>/results',
+					sorter: { path: 'Arbpl' }
+					  }">
+			  <core:Item key="{workcentermodel>Arbpl}" text="{workcentermodel>Arbpl}" />
+	            </m:ComboBox>
+						            
+				<m:ComboBox 
+	              id="lossType3cmbox"
+	               selectedKey="{path:'previouslogmodel>/TOELOSS/results/2/Lostp',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+             		   selectionChange=""
+             		    items="{
+									path: 'lossmodel>/',
+									sorter: { path: 'key' }
+							  }">
+					   <core:Item key="{lossmodel>key}" text="{lossmodel>value}" />
+				     </m:ComboBox>	            
+					  <m:Input id="input3inhrs" type="Text" maxLength="5"  value="{path:'previouslogmodel>/TOELOSS/results/2/Timeh',
+					  												 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}">
+				       </m:Input>
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:ComboBox 
+	              id="workcenter4cmbox"
+	              		   selectedKey="{path:'previouslogmodel>/TOELOSS/results/3/Arbpl',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+			 selectionChange=""
+         		   items="{
+					path: 'workcentermodel>/results',
+					sorter: { path: 'Arbpl' }
+					  }">
+			  <core:Item key="{workcentermodel>Arbpl}" text="{workcentermodel>Arbpl}" />
+	            </m:ComboBox>
+						            
+				<m:ComboBox 
+	              id="lossType4cmbox"
+	               selectedKey="{path:'previouslogmodel>/TOELOSS/results/3/Lostp',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+             		   selectionChange=""
+             		    items="{
+									path: 'lossmodel>/',
+									sorter: { path: 'key' }
+							  }">
+					   <core:Item key="{lossmodel>key}" text="{lossmodel>value}" />
+				     </m:ComboBox>	            
+					  <m:Input id="input4inhrs" type="Text" maxLength="5" value="{path:'previouslogmodel>/TOELOSS/results/3/Timeh',
+					  												 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}">
+				       </m:Input>
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:ComboBox 
+	              id="workcenter5cmbox"
+	              		   selectedKey="{path:'previouslogmodel>/TOELOSS/results/4/Arbpl',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+			 selectionChange=""
+         		   items="{
+					path: 'workcentermodel>/results',
+					sorter: { path: 'Arbpl' }
+					  }">
+			  <core:Item key="{workcentermodel>Arbpl}" text="{workcentermodel>Arbpl}" />
+	            </m:ComboBox>
+						            
+				<m:ComboBox 
+	              id="lossType5cmbox"
+	               selectedKey="{path:'previouslogmodel>/TOELOSS/results/4/Lostp',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+             		   selectionChange=""
+             		    items="{
+									path: 'lossmodel>/',
+									sorter: { path: 'key' }
+							  }">
+					   <core:Item key="{lossmodel>key}" text="{lossmodel>value}" />
+				     </m:ComboBox>	            
+					  <m:Input id="input5inhrs" type="Text" maxLength="5" value="{path:'previouslogmodel>/TOELOSS/results/4/Timeh',
+					  												 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}">
+				       </m:Input>
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:ComboBox 
+	              id="workcenter6cmbox"
+	              		   selectedKey="{path:'previouslogmodel>/TOELOSS/results/5/Arbpl',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+			 selectionChange=""
+         		   items="{
+					path: 'workcentermodel>/results',
+					sorter: { path: 'Arbpl' }
+					  }">
+			  <core:Item key="{workcentermodel>Arbpl}" text="{workcentermodel>Arbpl}" />
+	            </m:ComboBox>
+						            
+				<m:ComboBox 
+	              id="lossType6cmbox"
+	               selectedKey="{path:'previouslogmodel>/TOELOSS/results/5/Lostp',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+             		   selectionChange=""
+             		    items="{
+									path: 'lossmodel>/',
+									sorter: { path: 'key' }
+							  }">
+					   <core:Item key="{lossmodel>key}" text="{lossmodel>value}" />
+				     </m:ComboBox>	            
+					  <m:Input id="input6inhrs" type="Text" maxLength="5" value="{path:'previouslogmodel>/TOELOSS/results/5/Timeh',
+					  												 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}">
+				       </m:Input>
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:ComboBox 
+	              id="workcenter7cmbox"
+	              		   selectedKey="{path:'previouslogmodel>/TOELOSS/results/6/Arbpl',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+			 selectionChange=""
+         		   items="{
+					path: 'workcentermodel>/results',
+					sorter: { path: 'Arbpl' }
+					  }">
+			  <core:Item key="{workcentermodel>Arbpl}" text="{workcentermodel>Arbpl}" />
+	            </m:ComboBox>
+						            
+				<m:ComboBox 
+	              id="lossType7cmbox"
+	               selectedKey="{path:'previouslogmodel>/TOELOSS/results/6/Lostp',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+             		   selectionChange=""
+             		    items="{
+									path: 'lossmodel>/',
+									sorter: { path: 'key' }
+							  }">
+					   <core:Item key="{lossmodel>key}" text="{lossmodel>value}" />
+				     </m:ComboBox>	            
+					  <m:Input id="input7inhrs" type="Text" maxLength="5" value="{path:'previouslogmodel>/TOELOSS/results/6/Timeh',
+					  												 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}">
+				       </m:Input>
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:ComboBox 
+	              id="workcenter8cmbox"
+	              		    selectedKey="{path:'previouslogmodel>/TOELOSS/results/7/Arbpl',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+			 selectionChange=""
+         		   items="{
+					path: 'workcentermodel>/results',
+					sorter: { path: 'Arbpl' }
+					  }">
+			  <core:Item key="{workcentermodel>Arbpl}" text="{workcentermodel>Arbpl}" />
+	            </m:ComboBox>
+						            
+				<m:ComboBox 
+	              id="lossType8cmbox"
+	               selectedKey="{path:'previouslogmodel>/TOELOSS/results/7/Lostp',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+             		   selectionChange=""
+             		    items="{
+									path: 'lossmodel>/',
+									sorter: { path: 'key' }
+							  }">
+					   <core:Item key="{lossmodel>key}" text="{lossmodel>value}" />
+				     </m:ComboBox>	            
+					  <m:Input id="input8inhrs" type="Text" maxLength="5" value="{path:'previouslogmodel>/TOELOSS/results/7/Timeh',
+					  												 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}">
+				       </m:Input>
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:ComboBox 
+	              id="workcenter9cmbox"
+	              		    selectedKey="{path:'previouslogmodel>/TOELOSS/results/8/Arbpl',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+			 selectionChange=""
+         		   items="{
+					path: 'workcentermodel>/results',
+					sorter: { path: 'Arbpl' }
+					  }">
+			  <core:Item key="{workcentermodel>Arbpl}" text="{workcentermodel>Arbpl}" />
+	            </m:ComboBox>
+						            
+				<m:ComboBox 
+	              id="lossType9cmbox"
+	               selectedKey="{path:'previouslogmodel>/TOELOSS/results/8/Lostp',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+             		   selectionChange=""
+             		   items="{
+									path: 'lossmodel>/',
+									sorter: { path: 'key' }
+							  }">
+					   <core:Item key="{lossmodel>key}" text="{lossmodel>value}" />
+				     </m:ComboBox>	            
+					  <m:Input id="input9inhrs" type="Text" maxLength="5" value="{path:'previouslogmodel>/TOELOSS/results/8/Timeh',
+					  												 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}">
+				       </m:Input>
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:ComboBox 
+	              id="workcenter10cmbox"
+	              		   selectedKey="{path:'previouslogmodel>/TOELOSS/results/9/Arbpl',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+			 selectionChange=""
+         		   items="{
+					path: 'workcentermodel>/results',
+					sorter: { path: 'Arbpl' }
+					  }">
+			  <core:Item key="{workcentermodel>Arbpl}" text="{workcentermodel>Arbpl}" />
+	            </m:ComboBox>
+						            
+				<m:ComboBox 
+	              id="lossType10cmbox"
+	               selectedKey="{path:'previouslogmodel>/TOELOSS/results/9/Lostp',
+						   formatter:'com.ceat.logbookauto.util.Formatter.lossEngDecision'}"
+             		   selectionChange=""
+             		    items="{
+									path: 'lossmodel>/',
+									sorter: { path: 'key' }
+							  }">
+					   <core:Item key="{lossmodel>key}" text="{lossmodel>value}" />
+				     </m:ComboBox>	            
+					  <m:Input id="input10inhrs" type="Text" maxLength="5" value="{path:'previouslogmodel>/TOELOSS/results/9/Timeh',
+					  												 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}">
+				       </m:Input>
+				</m:cells>
+				</m:ColumnListItem> 
+				</m:items>
+				</m:Table>
+						
+						</blocks>
+					</ObjectPageSubSection>
+						<ObjectPageSubSection title="Process Losses(Hours)">
+						<blocks>
+						<m:VBox width="100%">
+					<m:Table id="idProcessLossTable" width="100%"
+		inset="false"
+				 >
+				<m:headerToolbar>
+			<m:Toolbar>
+			
+			 <m:Title id="tableTitle"  level="H2" text="Stock Delay" /> 
+			</m:Toolbar>
+		</m:headerToolbar>
+		<m:columns>
+						
+			<m:Column hAlign="Center" >
+				<m:Text text="Description" />
+			</m:Column>
+			<m:Column hAlign="Center">
+				<m:Text text="Remarks" />
+			</m:Column>
+			<m:Column hAlign="Center" >
+				<m:Text text="In Hrs" />
+			</m:Column>
+				</m:columns>
+			<m:items>
+			<m:ColumnListItem>
+			<m:cells>		
+			     <m:Input id="inputStockDelDesc1" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/0/Ldcsr',
+						   											  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}" ></m:Input>
+			     <m:Input id="inputStockDelRem1" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/0/Remrk',
+			     													 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}" > </m:Input>
+				  <m:Input id="inputStockDelHrs1" maxLength="5" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/0/Timeh',
+				  													  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}" > </m:Input>           
+				            
+		  </m:cells>
+				</m:ColumnListItem>
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:Input id="inputStockDelDesc2" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/1/Ldcsr',
+						   											  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"></m:Input>
+			     <m:Input id="inputStockDelRem2" type="Text"  value="{path:'previouslogmodel>/TOPLOSS/results/1/Remrk',
+			     													 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>
+				  <m:Input id="inputStockDelHrs2" maxLength="5" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/1/Timeh',
+				  													  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>           
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:Input id="inputStockDelDesc3" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/2/Ldcsr',
+						   											  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"></m:Input>
+			     <m:Input id="inputStockDelRem3" type="Text"  value="{path:'previouslogmodel>/TOPLOSS/results/2/Remrk',
+			     													 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>
+				  <m:Input id="inputStockDelHrs3" maxLength="5" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/2/Timeh',
+				  													  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>           
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:Input id="inputStockDelDesc4" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/3/Ldcsr',
+						   											  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"></m:Input>
+			     <m:Input id="inputStockDelRem4" type="Text"  value="{path:'previouslogmodel>/TOPLOSS/results/3/Remrk',
+			     													 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>
+				  <m:Input id="inputStockDelHrs4" maxLength="5" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/3/Timeh',
+				  													  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>           
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:Input id="inputStockDelDesc5" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/4/Ldcsr',
+						   											  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"></m:Input>
+			     <m:Input id="inputStockDelRem5" type="Text"  value="{path:'previouslogmodel>/TOPLOSS/results/4/Remrk',
+			     													 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>
+				  <m:Input id="inputStockDelHrs5" maxLength="5" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/4/Timeh',
+				  													  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>           
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:Input id="inputStockDelDesc6" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/5/Ldcsr',
+						   											  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"></m:Input>
+			     <m:Input id="inputStockDelRem6" type="Text"  value="{path:'previouslogmodel>/TOPLOSS/results/5/Remrk',
+			     													 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>
+				  <m:Input id="inputStockDelHrs6" maxLength="5" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/5/Timeh',
+				  													  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>           
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:Input id="inputStockDelDesc7" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/6/Ldcsr',
+																	formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"></m:Input>
+			     <m:Input id="inputStockDelRem7" type="Text"  value="{path:'previouslogmodel>/TOPLOSS/results/6/Remrk',
+			     													 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>
+				  <m:Input id="inputStockDelHrs7" maxLength="5" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/6/Timeh',
+				  													  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>           
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:Input id="inputStockDelDesc8" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/7/Ldcsr',
+						   											  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"></m:Input>
+			     <m:Input id="inputStockDelRem8" type="Text"  value="{path:'previouslogmodel>/TOPLOSS/results/7/Remrk',
+			     													 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>
+				  <m:Input id="inputStockDelHrs8" maxLength="5" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/7/Timeh',
+				  													  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>           
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:Input id="inputStockDelDesc9" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/8/Ldcsr',
+						   											  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"></m:Input>
+			     <m:Input id="inputStockDelRem9" type="Text"  value="{path:'previouslogmodel>/TOPLOSS/results/8/Remrk',
+			     													 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>
+				  <m:Input id="inputStockDelHrs9" maxLength="5" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/8/Timeh',
+				  													  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>           
+				</m:cells>
+				</m:ColumnListItem> 
+				
+				
+				<m:ColumnListItem>
+				<m:cells>		
+				<m:Input id="inputStockDelDesc10" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/9/Ldcsr',
+						   											  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"></m:Input>
+			     <m:Input id="inputStockDelRem10" type="Text"  value="{path:'previouslogmodel>/TOPLOSS/results/9/Remrk',
+			     													 formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>
+				  <m:Input id="inputStockDelHrs10" maxLength="5" type="Text" value="{path:'previouslogmodel>/TOPLOSS/results/9/Timeh',
+				  													  formatter:'com.ceat.logbookauto.util.Formatter.lossInputDataCheck'}"> </m:Input>           
+				</m:cells>
+				</m:ColumnListItem> 
+				</m:items>
+				</m:Table>
+			
+						<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form106" backgroundDesign="Solid" editable="true" emptySpanL="3" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%" columnsM="2">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				        
+				      
+				             <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="otherDueLosses" level="H4" icon="sap-icon://activity-items" text="Losses Due To Other"/>
+				            <m:Label text="Description" id="__label28"/>
+				            <m:Input id="inputLdOthrDesc" type="Text" value="{previouslogmodel>/Ldodc}">
+				            </m:Input>
+				           
+				            <m:Label text="Time In Hours" id="__label29"/>
+				            <m:Input id="inputLdOthrHrs" maxLength="5" type="Text" value="{previouslogmodel>/Ldoth}">
+				            </m:Input>
+				            
+				             <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="trainingLosses" level="H4" icon="sap-icon://activity-items" text="Losses Due To Training"/>
+				            <m:Label text="Description" id="__label30"/>
+				            <m:Input id="inputTraingLosDesc" type="Text" value="{previouslogmodel>/Ldtdc}">
+				            </m:Input>
+				      
+				            <m:Label text="Time In Hours"  id="__label31"/>
+				            <m:Input id="inputTrainLossHrs" maxLength="5" type="Text" value="{previouslogmodel>/Ldtth}">
+				            </m:Input>
+				         </sap.ui.layout.form:content> 
+				         </sap.ui.layout.form:SimpleForm>	
+				         </m:VBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+ 	<ObjectPageSection title="">
+				<subSections>
+					<ObjectPageSubSection title="FAC">
+						<blocks>
+							<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form107" backgroundDesign="Solid" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				            <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="fac" level="H4" icon="sap-icon://activity-items" text="FAC"/>
+				            <m:Label text="Name" id="__label32"/>
+				            <m:Input id="inputFacName" maxLength="40" type="Text" value="{previouslogmodel>/Facnm}">
+				            </m:Input>
+				             <m:Label text="Clock Number" id="__label33"/>
+				            <m:Input id="inputFacClockNum" maxLength="10" type="Text" value="{previouslogmodel>/Faccn}">
+				            </m:Input>
+				            <m:Label text="Remarks" id="__label34"/>
+				            <m:Input id="inputFacRemark" type="Text" value="{previouslogmodel>/Facrm}">
+				            </m:Input>
+				            <!--  <m:Label text="Remarks" id="__label35"/>
+				            <m:Input id="inputFacRemarks" type="Text">
+				            </m:Input> -->
+				         </sap.ui.layout.form:content> 
+				         </sap.ui.layout.form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+ 	
+ 	<ObjectPageSection title="">
+				<subSections>
+					<ObjectPageSubSection title="MTC">
+						<blocks>
+							<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form108" backgroundDesign="Solid" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				            <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="mtc" level="H4" icon="sap-icon://activity-items" text="MTC"/>
+				            <m:Label text="Name" id="__label36"/>
+				            <m:Input id="inputMtcName" maxLength="40" type="Text" value="{previouslogmodel>/Mtcnm}">
+				            </m:Input>
+				             <m:Label text="Clock Number" id="__label37"/>
+				            <m:Input id="inputMtcClockNum" maxLength="10" type="Text" value="{previouslogmodel>/Mtccn}">
+				            </m:Input>
+				            <m:Label text="Remarks" id="__label38"/>
+				            <m:Input id="inputMtcRemark" type="Text" value="{previouslogmodel>/Mtcrm}">
+				            </m:Input>
+				             <!-- <m:Label text="Remarks" id="__label39"/>
+				            <m:Input id="inputMtcRemarks" type="Text">
+				            </m:Input> -->
+				         </sap.ui.layout.form:content> 
+				         </sap.ui.layout.form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+ 
+ 	<ObjectPageSection title="">
+				<subSections>
+					<ObjectPageSubSection title="LT1">
+						<blocks>
+							<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form109" backgroundDesign="Solid" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				            <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="lt1" level="H4" icon="sap-icon://activity-items" text="LT1"/>
+				            <m:Label text="Name" id="__label40"/>
+				            <m:Input id="inputLt1Name" maxLength="40" type="Text" value="{previouslogmodel>/Lt1nm}">
+				            </m:Input>
+				             <m:Label text="Clock Number" id="__label41"/>
+				            <m:Input id="inputLt1ClockNum" maxLength="10" type="Text" value="{previouslogmodel>/Lt1cn}">
+				            </m:Input>
+				            <m:Label text="Remarks" id="__label42"/>
+				            <m:Input id="inputLt1Remark" type="Text" value="{previouslogmodel>/Lt1rm}">
+				            </m:Input>
+				             <!-- <m:Label text="Remarks" id="__label43"/>
+				            <m:Input id="inputLt1Remarks" type="Text">
+				            </m:Input> -->
+				         </sap.ui.layout.form:content> 
+				         </sap.ui.layout.form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+			
+			<ObjectPageSection title="">
+				<subSections>
+					<ObjectPageSubSection title="Near Miss">
+						<blocks>
+							<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form110" backgroundDesign="Solid" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				            <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="nearMiss" level="H4" icon="sap-icon://activity-items" text="Near Miss"/>
+				            <m:Label text="Near Miss" id="__label44"/>
+				            <m:Input id="inputNearMissName" type="Text" value="{previouslogmodel>/Nrmis}">
+				            </m:Input>
+				            <!--  <m:Label text="Clock Number" id="__label45"/>
+				            <m:Input id="inputNearMissClockNum" type="Text">
+				            </m:Input>
+				            <m:Label text="Remark" id="__label46"/>
+				            <m:Input id="inputNearMissRemark" type="Text">
+				            </m:Input>
+				             <m:Label text="Remarks" id="__label47"/>
+				            <m:Input id="inputNearMissRemarks" type="Text">
+				            </m:Input> -->
+				         </sap.ui.layout.form:content> 
+				         </sap.ui.layout.form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+			<ObjectPageSection title="">
+				<subSections>
+					<ObjectPageSubSection title="Quality Issues">
+						<blocks>
+							<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form111" backgroundDesign="Solid" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				            <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="qualityIssues" level="H4" icon="sap-icon://activity-items" text="Quality Issues"/>
+				            <m:Label text="Rejection" id="__label48"/>
+				            <m:Input id="inpuQaRej" type="Text" value="{previouslogmodel>/Qirej}">
+				            </m:Input>
+				             <m:Label text="Held Up" id="__label49"/>
+				            <m:Input id="inputQaHelUp" type="Text" value="{previouslogmodel>/Qihup}">
+				            </m:Input>
+				            <m:Label text="Rework" id="__label50"/>
+				            <m:Input id="inputQaRw" type="Text" value="{previouslogmodel>/Qirwk}">
+				            </m:Input>
+				             <m:Label text="Scrap" id="__label51"/>
+				            <m:Input id="inputQaScrap" type="Text" value="{previouslogmodel>/Qiscp}">
+				            </m:Input>
+				         </sap.ui.layout.form:content> 
+				         </sap.ui.layout.form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection title="">
+				<subSections>
+					<ObjectPageSubSection title="Delivery">
+						<blocks>
+							<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form112" backgroundDesign="Solid" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				            <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="OperatingEfficiency" level="H4" icon="sap-icon://activity-items" text="Operating Efficiency"/>
+				            <m:Label text="Plan" id="__label52"/>
+				            <m:Input id="inputOEPlan" maxLength="5" type="Text" value="{previouslogmodel>/Dloep}">
+				            </m:Input>
+				            <m:Label text="Actual" id="__label53"/>
+				            <m:Input id="inputOEActual" maxLength="5" type="Text" value="{previouslogmodel>/Dloea}">
+				            </m:Input>
+				            <m:Label text="Remarks" id="__label54"/>
+				            <m:Input id="inputOERemarks" type="Text" value="{previouslogmodel>/Dloer}">
+				            </m:Input>
+				            
+				            
+				              <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="clip" level="H4" icon="sap-icon://activity-items" text="Clip"/>
+				            <m:Label text="Plan" id="__label55"/>
+				            <m:Input id="inputClipPlan" maxLength="5" type="Text" value="{previouslogmodel>/Dlclp}">
+				            </m:Input>
+				            <m:Label text="Actual" id="__label56"/>
+				            <m:Input id="inputClipActual" maxLength="5" type="Text" value="{previouslogmodel>/Dlcla}">
+				            </m:Input>
+				            <m:Label text="Remarks" id="__label57"/>
+				            <m:Input id="inputClipRemarks" type="Text" value="{previouslogmodel>/Dlclr}">
+				            </m:Input>
+				            
+				             <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="clipLossRemark" level="H4" icon="sap-icon://activity-items" text="Remark For CLIP Loss"/>
+				            <m:Label text="Remark" id="__label58"/>
+				            <m:Input id="inputClipLossRemark" type="Text" value="{previouslogmodel>/Drclr}">
+				            </m:Input>
+				           
+				            
+				         </sap.ui.layout.form:content> 
+				         </sap.ui.layout.form:SimpleForm>
+						</blocks>
+					
+				</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+				<ObjectPageSection title="">
+				<subSections>
+				<ObjectPageSubSection title="Morals">
+						<blocks>
+							<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form113" backgroundDesign="Solid" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				            <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="morals" level="H4" icon="sap-icon://activity-items" text="Morals"/>
+				            <m:Label text="Kaizens" id="__label59"/>
+				            <m:Input id="inputKaizens" type="Text" value="{previouslogmodel>/Mkaiz}">
+				            </m:Input>
+				            <m:Label text="Poka Yoke" id="__label60"/>
+				            <m:Input id="inputPokYok" type="Text" value="{previouslogmodel>/Mpkyk}">
+				            </m:Input>
+				            <m:Label text="Improvements" id="__label61"/>
+				            <m:Input id="inputMorImprovements" type="Text" value="{previouslogmodel>/Mimpr}">
+				            </m:Input>
+				        
+				         </sap.ui.layout.form:content> 
+				         </sap.ui.layout.form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+						</subSections>
+						</ObjectPageSection>
+			
+						<ObjectPageSection title="">
+						<subSections>
+						<ObjectPageSubSection title="Act Of Indiscipline">
+						<blocks>
+							<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form114" backgroundDesign="Solid" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				            <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="indiscilipneAct" level="H4" icon="sap-icon://activity-items" text="Act of Indiscipline"/>
+				            <m:Label text="Any Act Of Indiscipline" id="__label62"/>
+				            <m:TextArea id="inputIndicipline" value="{previouslogmodel>/Indsp}">
+				            </m:TextArea>
+				        
+				         </sap.ui.layout.form:content> 
+				         </sap.ui.layout.form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+			<ObjectPageSection title="">
+						<subSections>
+						<ObjectPageSubSection title="Follow Up">
+						<blocks>
+							<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form115" backgroundDesign="Solid" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				            <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="followUp" level="H4" icon="sap-icon://activity-items" text="Follow Up For Incoming Shift"/>
+				            <m:Label text="Follow Up Text" id="__label63"/>
+				            <m:TextArea id="inputFollowUp" value="{previouslogmodel>/Fisft}">
+				            </m:TextArea>
+				        
+				         </sap.ui.layout.form:content> 
+				         </sap.ui.layout.form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			
+			
+			<ObjectPageSection title="">
+						<subSections>
+						<ObjectPageSubSection title="MP">
+						<blocks>
+							<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" layout="ResponsiveGridLayout" id="__form116" backgroundDesign="Solid" editable="true" emptySpanL="4" emptySpanM="4" labelSpanL="3" labelSpanM="3" minWidth="1024" width="100%">
+				        <sap.ui.layout.form:content xmlns:sap.ui.layout.form="sap.ui.layout.form">
+				            <sap.ui.core:Title xmlns:sap.ui.core="sap.ui.core" id="mpOffctng" level="H4" icon="sap-icon://activity-items" text="MP"/>
+				            <m:Label text="Officiating" />
+				            <m:Input id="offitngInp" value="{previouslogmodel>/Mpofc}">
+				            </m:Input>
+				        
+				         </sap.ui.layout.form:content> 
+				         </sap.ui.layout.form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+ 
+	</ObjectPageLayout>
+	
+	</m:content>
+		<m:footer>
+	      			<m:Bar design="Footer">
+				        <m:contentRight>
+				           <m:Button id="submitFinal" type="Accept" text="{i18n>submitFinal}" press="handleFinalSubmit" icon="sap-icon://complete" activeIcon="sap-icon://complete"/>
+				           	<m:Button id="resetFinal" type="Reject" text="{i18n>resetFinal}" press="handleReset" icon="sap-icon://refresh" activeIcon="sap-icon://refresh"/>
+				        </m:contentRight>
+				   </m:Bar>
+	   		</m:footer>
+					</m:Page>	
+				
+		
+					
+</core:View>
