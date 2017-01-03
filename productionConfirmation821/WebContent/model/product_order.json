@@ -1,0 +1,106 @@
+{"product_order":
+  [
+    {
+      "material":"1837",
+      "matDesc":"Rubber",
+      "uom":"kg",
+      "prod_ordr":"1123857",
+      "plant_qty":"50",
+      "conf_qty":"45",
+      "stock_qty":"200"
+    },
+    {
+      "material":"1838",
+      "matDesc":"silica",
+      "uom":"kg",
+      "prod_ordr":"1123786",
+      "plant_qty":"45",
+      "conf_qty":"35",
+      "stock_qty":"100"
+    },
+    {
+      "material":"1840",
+      "matDesc":"Sulphur",
+      "uom":"kg",
+      "prod_ordr":"1135647",
+      "plant_qty":"56",
+      "conf_qty":"50",
+      "stock_qty":"240"
+    },
+    {
+      "material":"1841",
+      "matDesc":"zinc",
+      "uom":"kg",
+      "prod_ordr":"1356378",
+      "plant_qty":"76",
+      "conf_qty":"65",
+      "stock_qty":"120"
+    },
+    {
+      "material":"1842",
+      "matDesc":"Carbon",
+      "uom":"kg",
+      "prod_ordr":"1278546",
+      "plant_qty":"83",
+      "conf_qty":"75",
+      "stock_qty":"980"
+    }
+  ],
+  "Filters": [
+			{
+				"type": "material",
+				"values": [
+					{
+						"text": "1837",
+						"data": 1
+					},
+					{
+						"text": "1838",
+						"data": 2
+					},
+					{
+						"text": "1840",
+						"data": 4
+					},
+					{
+						"text": "1841",
+						"data": 2
+					},
+					{
+						"text": "1842",
+						"data": 3
+					},
+					{
+						"text": "1817",
+						"data": 1
+					},
+					{
+						"text": "1871",
+						"data": 1
+					}
+				]
+			},
+			{
+				"type": "matDesc",
+				"values": [
+					{
+						"text": "Rubber",
+						"data": 3
+					},
+					{
+						"text": "silica",
+						"data": 3
+					},
+					{
+						"text": "Sulphur",
+						"data": 5
+					},
+					{
+						"text": "Carbon",
+						"data": 3
+					}
+				]
+			}
+		]
+  
+}

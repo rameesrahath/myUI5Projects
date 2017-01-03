@@ -1,0 +1,135 @@
+.sap_panel_head .sapMPanelBG 
+{
+    background-color: rgba(221, 232, 237, 0);
+}
+.headT header span 
+{
+    font-weight: 600;
+    color: black;
+}
+.header_label_size
+{
+	 font-size: medium;
+}
+/* .sapUiTinyMarginBegin
+{
+	 margin-left: 3.2rem !important;
+} */
+.header_time
+{
+	font-size: 18px !important;
+}
+.sap-phone .header_content h1 span 
+{
+    font-size: 22px !important;
+}
+.header_content h1 span div 
+{
+    color: black !important;
+}
+.header_time span 
+{
+    color: black !important;
+}
+.header_content .sapMObjectNumberText
+{
+	color:black !important;
+}
+.mob_txt
+{
+	white-space: normal;
+}
+.mob_link
+{
+	white-space: normal;
+}
+
+.sap-desktop .calclass {
+    left: 2em;
+}
+.sap-phone .calclass {
+    left: -1em;
+}
+#S1--objHeaderTitle-number
+{
+	cursor:pointer;
+}
+.margn
+{
+margin-top:1em;	
+}
+/* ////////////////////////////////// */
+.wcmobileclass{
+	font - size: 0.7 rem;
+    color: #E8422F !important;
+}
+.sapRTSTOrdProdLabelPromotionList {
+    font - size: 0.7 rem;
+    color: #007833 !important;
+}/* .sapMListTblCell.sapRTSTOrdProdColumnProductTable {
+    padding - top: 0.5 rem;
+    padding - bottom: 0.5 rem
+}
+html: not([dir = rtl]).sapMListTblCell.sapRTSTOrdProdColumnProductTable.sapRTSTOrdProdColumnProductTableQuantity {
+    padding - right: 0 rem
+}
+html[dir = rtl].sapMListTblCell.sapRTSTOrdProdColumnProductTable.sapRTSTOrdProdColumnProductTableQuantity {
+    padding - left: 0 rem
+}.sapRTSTOrdProdLabelPromotionDetail.sapMObjectAttributeDiv {
+    color: @sapUiPositiveText
+}.sapMFlexBox.sapRTSTOrdProdVBoxQuantity {
+    margin - top: 1 rem;
+    padding - top: 1 rem
+}
+html: not([dir = rtl]).sapMFlexBox.sapRTSTOrdProdVBoxQuantity > .sapMFlexItem {
+    margin - right: 1 rem
+}
+html[dir = rtl].sapMFlexBox.sapRTSTOrdProdVBoxQuantity > .sapMFlexItem {
+    margin - left: 1 rem
+}.sap - phone.sapRTSTOrdProdGrid.sapUiRespGrid.sapUiRespGridVSpace1 > div {
+    margin - bottom: 0 rem
+}.sapMPanel.sapRTSTOrdProdPanelCalendar.sapMPanelHdr {
+    margin - left: 1 rem;
+    margin - right: 1 rem;
+    font - size: 1 rem
+}.sapMPanel.sapRTSTOrdProdPanelCalendar.sapMPanelContent {
+    padding - left: 0;
+    padding - right: 0;
+    margin - left: 1 rem;
+    margin - right: 1 rem
+}.sap - phone.sapMPanel.sapRTSTOrdProdPanelCalendar.sapMPanelHdr {
+    padding - left: 0 rem;
+    padding - right: 0 rem
+}.sapMPanel.sapRTSTOrdProdPanelCalendar.sapMText.sapRTSTOrdProdTextCalendarMonth {
+    padding - bottom: 0.5 rem
+}.sap - phone.sapMPanel.sapRTSTOrdProdPanelCalendar.sapMPanelBG.sapMPanelContent {
+    padding - top: 0.5 rem;
+    padding - bottom: 0.5 rem
+}.sap - phone.sapMOH.sapRTSTOrdProdObjectHeader.sapMOHBottomRow {
+    margin - top: 0.5 rem
+}.sap - phone.sapMOH.sapRTSTOrdProdObjectHeader.sapMOHAttrRow {
+    margin - top: 0.125 rem
+}.sap - phone.sapMFlexBox.sapRTSTOrdProdVBoxQuantity {
+    margin - top: 0
+}.sap - phone.sapMOH.sapRTSTOrdProdObjectHeader {
+    margin - top: 0;
+    margin - bottom: 0
+}
+html: not([dir = rtl]).sap - phone.sapMOH.sapRTSTOrdProdObjectHeader {
+    margin - right: 0
+}
+html[dir = rtl].sap - phone.sapMOH.sapRTSTOrdProdObjectHeader {
+    margin - left: 0
+}.sap - phone.sapRTSTOrdProdForm.sapUiFormTitle {
+    padding - left: 0;
+    padding - right: 0
+}.sap - phone.sapRTSTOrdProdForm.sapUiFormResGridCont {
+    padding: 0.5 rem 0 0.5 rem 0
+}.sapRTSTOrdProdForm.sapUiFormTitle.sapUiFormTitleH4 {
+    font - size: 1 rem
+}.sapMLnk.sapRTSTOrdProdLinkPromotionName {
+    margin - top: 0.5 rem
+}.sapMLabel.sapRTSTOrdProdLabelPromotionName {
+    margin - top: 0.5 rem
+}
+ */

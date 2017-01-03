@@ -1,0 +1,99 @@
+<core:View xmlns:core="sap.ui.core" 
+		   xmlns:mvc="sap.ui.core.mvc"
+		   xmlns="sap.m" 
+		   xmlns:l="sap.ui.layout" 
+		   xmlns:Unified="sap.ui.unified"
+		   xmlns:f="sap.ui.layout.form" 
+		   controllerName="sap.ui.ceat.prodConf.view.S1"
+		   xmlns:html="http://www.w3.org/1999/xhtml"
+		   xmlns:cl="sap.ui.commons.layout"
+		   xmlns:uni="sap.ui.unified">
+	<html:style>
+	    
+	</html:style>
+	<Page title="{i18n>title}" class="Label headT">
+			<content>
+				    <ObjectHeader
+								 class="header_content"
+								 id="objHeaderTitle"
+								 press="handleLinkObjectAttributePress">
+								 <statuses>
+										<ObjectStatus
+											text="" class="header_time" id="objHeader_stat"/>
+								</statuses>
+					</ObjectHeader>
+					<VBox class="sapUiSmallMargin">
+							<f:SimpleForm id="SimpleFormChange354"
+									      minWidth="1024"
+										  maxContainerCols="2"
+										  editable="true"
+									      layout="ResponsiveGridLayout"
+										  title=""
+										  labelSpanL="3"
+										  labelSpanM="3"
+										  emptySpanL="4"
+										  emptySpanM="4"
+										  columnsL="1"
+										  columnsM="1"
+										  class="editableForm">
+										  <f:content>
+										  			<Label  class="" text="Department"/>
+													<!-- <Select id="department" change="deptChange" />  -->
+													<ComboBox 
+															id="department" 
+															selectionChange="deptChange"
+															showSecondaryValues= "true"
+															valueStateText="Department"
+															class="mandatory"
+														    items="{
+																		path: '/results'
+																   }">
+														<core:ListItem key="{Stand}" text="{Ktext}" additionalText = "{Stand}"/>
+													</ComboBox>
+													<Label text="Shift" />
+													
+													<ComboBox 
+															id="shift" 
+															change="shiftChange"
+															showSecondaryValues= "true"
+															valueStateText="Shift"
+															class="mandatory"
+														    items="{
+																		path: '/results'
+																   }">
+														<core:ListItem key="{Stime}" text="{Etime}" additionalText = "{Stime}"/>
+													</ComboBox>
+													<!-- <Select id="shift" change="shiftChange" />  -->
+													<Label text="Works Center" />
+													<ComboBox 
+															id="workcenter" 
+															change="handleChange"
+															showSecondaryValues= "true"
+															valueStateText="Work Center"
+															class="mandatory"
+														    items="{
+																		path: '/results'
+																   }">
+														<core:ListItem key="{KYVAL}" text="{Arbpl}" additionalText = "{KYVAL}"/>
+													</ComboBox>
+													<!-- <Select id="workcenter" change="handleChange" />  -->
+													<Label text="Employee ID" />
+													<Input  id="emp_id" maxLength="8" type="Number" valueStateText = "Employee ID" class="mandatory"/>
+										</f:content>
+							</f:SimpleForm>
+					</VBox>
+					<uni:Calendar
+					id="calendar"
+					select="handleCalendarSelect"
+					visible="false" />
+			</content>
+			<footer>
+	      			<Bar>
+				        <contentRight>
+				           <Button type="Accept" text="{i18n>submit}" press="handleSubmit" />
+				           <Button type="Reject" text="{i18n>reset}" press="handleReset" />
+				        </contentRight>
+				   </Bar>
+	   		</footer>
+		</Page>
+</core:View>

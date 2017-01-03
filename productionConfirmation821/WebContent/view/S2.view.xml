@@ -1,0 +1,417 @@
+<core:View 
+			xmlns:core="sap.ui.core" 
+			xmlns="sap.m" 
+			xmlns:l="sap.ui.layout" 
+			xmlns:f="sap.ui.layout.form" 
+			controllerName="sap.ui.ceat.prodConf.view.S2">
+			<Page id="orderProductsListPage" title="" showNavButton="true" navButtonPress="onNavBack">
+						<headerContent>
+							<!-- <Button id="orderProductsButtonUp" icon="sap-icon://up" press="onUpPress" enabled="false"/>
+							<Button id="orderProductsButtonDown" icon="sap-icon://down" press="onDownPress" enabled="false"/> -->
+						</headerContent>
+						<subHeader>
+							<Bar id="orderProductsBarSearch">
+								<contentMiddle>
+									<SearchField width="100%" search="onSearch" liveChange="onLiveSearch" showRefreshButton="true" selectOnFocus="false" id="orderProductsSearchFieldProducts"/>
+								</contentMiddle>
+								
+							</Bar>
+						</subHeader>
+						<content>
+						<VBox
+							id="idVBox">
+							<items>
+										<FacetFilter 
+													id="orderProductsFacetFilter" 
+													type="Light" lists="{/Filters}" 
+													liveSearch="true" 
+													showPersonalization="true" 
+													showReset="true" 
+													reset="handleFacetFilterReset">
+											<lists>
+												<FacetFilterList
+																title="{Type}"
+																key="{key}"
+																multiselect="true"
+																listClose="handleListClose"
+																items="{values}" >
+																			<items>
+																				<FacetFilterItem
+																					text="{text}"
+																					key="{key}"
+																					count="{data}" />
+																			</items>
+												</FacetFilterList>
+											</lists>
+										</FacetFilter>
+									</items>
+							</VBox>
+							<Table id="productTable" items="{/results}" inset="false" showUnread="true" mode="SingleSelectMaster" visible="true" selectionChange="onSelectionChange" growing="true" growingThreshold="5" growingScrollToLoad="true" updateFinished="onListUpdateFinished">
+								<columns>
+								       <!--  <Column vAlign="Middle" hAlign="Center" id="orderProductWorkCenter" styleClass="sapRTSTOrdProdColumnProductTable" width="4em" visible="{layoutStatus>/IsLargeLayout}">
+											<Label text="{i18n&gt;wrkCenter}"/>
+										</Column> -->
+										<!-- <Column vAlign="Middle" hAlign="Center" id="orderProductsColumnProduct2" styleClass="sapRTSTOrdProdColumnProductTable" width="5em" visible="{layoutStatus>/IsLargeLayout}">
+											<Label text="{i18n&gt;Mat_Desc}"/>
+										</Column> -->
+										<Column id="orderProductsColumnProduct" vAlign="Middle" hAlign="Center" styleClass="sapRTSTOrdProdColumnProductTable" width="3em" visible="{layoutStatus>/IsLargeLayout}">
+											<Label text="{i18n&gt;Mat}"/>
+										</Column>
+										<!-- <Column vAlign="Middle" id="orderProductsColumnOrderTablet" hAlign="Center" visible="{layoutStatus&gt;/IsLargeLayout}" width="5em" styleClass="sapRTSTOrdProdColumnProductTable">
+											<Label text="{i18n&gt;prod_order}"/>
+										</Column>
+										<Column vAlign="Middle" width="3em" hAlign="Center" visible="{layoutStatus&gt;/IsLargeLayout}" id="orderProductsColumnOnPromotion" styleClass="sapRTSTOrdProdColumnProductTable">
+											<Label text="{i18n&gt;uom}"/>
+										</Column> -->
+										<Column vAlign="Middle" hAlign="Center" width="4.5em" visible="{layoutStatus&gt;/IsLargeLayout}" id="orderProductsColumnCurrentQuantity" styleClass="sapRTSTOrdProdColumnProductTable">
+											<Label text="{i18n&gt;plan_qty}"/>
+										</Column>
+										<!-- <Column vAlign="Middle" hAlign="Center" id="orderProductsColumnProduct3" styleClass="sapRTSTOrdProdColumnProductTable" width="4.5em" visible="{layoutStatus>/IsLargeLayout}">
+											<Label text="Hours"/>
+										</Column> -->
+										<!-- <Column vAlign="Middle" hAlign="Center" width="4.5em" visible="{layoutStatus&gt;/IsLargeLayout}" id="orderProductsColumnExpectedQuantity" styleClass="sapRTSTOrdProdColumnProductTable">
+											<Label text="{i18n&gt;confm_qty}"/>
+										</Column>
+										<Column vAlign="Middle" hAlign="Center" width="4.5em" visible="{layoutStatus&gt;/IsLargeLayout}" id="orderProductsColumnRemainingQuantity" styleClass="sapRTSTOrdProdColumnProductTable">
+											<Label text="{i18n&gt;rem_qty}"/>
+										</Column> -->
+										
+										<Column vAlign="Middle" hAlign="Center" width="3em" visible="{layoutStatus&gt;/IsLargeLayout}" id="orderProductsColumnAllocatedQuantity" styleClass="sapRTSTOrdProdColumnProductTable">
+											<Label text="Actual"/>
+										</Column>
+										<Column vAlign="Middle" hAlign="Center" width="5em" visible="{layoutStatus&gt;/IsLargeLayout}" id="orderProductsLossTyp" styleClass="sapRTSTOrdProdColumnProductTable">
+											<Label text="LossType"/>
+										</Column>
+										<Column vAlign="Middle" hAlign="Center" width="5em" visible="{layoutStatus&gt;/IsLargeLayout}" id="orderProductsLossQntity" styleClass="sapRTSTOrdProdColumnProductTable">
+											<Label text="LossQty"/>
+										</Column>
+										<Column vAlign="Middle" hAlign="Center" width="5em" visible="{layoutStatus&gt;/IsLargeLayout}" id="orderProductsRemarks" styleClass="sapRTSTOrdProdColumnProductTable">
+											<Label text="Comment"/>
+										</Column>
+										
+										<!-- Column will be displayed in "smartphone" layout only -->
+										<Column id="orderProductsColumnQuantity1" hAlign="Left" width="3em" visible="{layoutStatus>/IsSmallLayout}"
+											styleClass="sapRTSTOrdProdColumnProductTable sapRTSTOrdProdColumnProductTableQuantity">
+											<Label text="Material" />
+										</Column>
+										<Column id="orderProductsColumnQuantity" hAlign="Left" width="4em" visible="{layoutStatus>/IsSmallLayout}"
+											styleClass="sapRTSTOrdProdColumnProductTable sapRTSTOrdProdColumnProductTableQuantity">
+											<Label text="Plan" />
+										</Column>
+										
+										<!-- Column will be displayed in "smartphone" layout only -->
+										<Column id="orderProductsColumnOrder" hAlign="Left" width="5em" visible="{layoutStatus>/IsSmallLayout}"
+												styleClass="sapRTSTOrdProdColumnProductTable">
+												<Label text="Actual" />
+										</Column>
+								</columns>
+							<items>
+							    <ColumnListItem vAlign="Top" press="onItemPress" unread="">
+									<cells>
+										<!-- <Text id="1" text="{material}"/>
+										<Text id="2" text="{matDesc}"/>
+										<Text id="3" text="{uom}"/>
+										<Text id="4" text="{prod_ordr}"/>
+										<Text id="6" text="{plant_qty}"/>
+										<Input id="5" type="Number" textAlign="Left" maxLength="4" showValueStateMessage="false"/>
+										<Text id="7" text="{conf_qty}"/> -->
+										
+										<!-- Cell content will be displayed in "smartphone" 
+							`````````````and "tablet/desktop" layout (exception: promotion label only for "smartphone") -->
+											
+											<!-- <Text text="{WorkCenter}"  />
+											
+											<Text text="{MaterialDescription}" id="orderProductsTextProductName" /> -->
+												
+										
+										<!-- Cell content will be displayed in "tablet/desktop" layout only -->
+										
+											<Text id="orderProductsInputOrderQuantityTablet1" text="{Material}"/>
+											
+										<!-- Cell content will be displayed in "tablet/desktop" layout only -->
+										<!-- 
+											<Text id="orderProductsTextPromotionTablet"
+												text="{Aufnr}" /> -->
+										
+										<!-- Cell content will be displayed in "tablet/desktop" layout only -->
+								
+											<!-- <Text id="orderProductsTextCurrentQuantity"
+												text="{Uoms}" /> -->
+										
+										<!-- Cell content will be displayed in "tablet/desktop" layout only -->
+										
+											<Text id="orderProductsTextExpectedQuantity"
+												text="{Planqty}" />
+												
+										<!-- 	<Text id="hhhrs"
+												text="8 Hrs" />	 -->
+										<!-- Cell content will be displayed in "tablet/desktop" layout only -->
+										
+										<!-- 	<Text id="orderProductsTextExpectedQuantity3"
+												text="{Shift1}" />
+									
+										Cell content will be displayed in "tablet/desktop" layout only
+											<Text id="orderProductsTextPushQuantity"
+												text="{Shift2}" />
+												
+										Cell content will be displayed in "tablet/desktop" layout only
+											<Text id="orderProductsTextRemainingQty"
+												text="{Shift3}" />	 -->
+										<!-- <VBox height="5rem" justifyContent="SpaceBetween"
+												id="orderProductsVBoxProductQuantitiesShift">
+											<HBox height="1.25rem" width="9.4em"
+													id="orderProductsColumnQuantityHBoxAllocationOrders1Shift">
+													<HBox justifyContent="Start" width="3.6em">
+														<Label text="{i18n>confm_qty1}" class="sapUiLargeMarginBottom mob_txt" textAlign="Right"
+															labelFor="orderProductsColumnQuantityTextAllocationOrders1" />
+													</HBox>
+													<HBox justifyContent="Start" width="3.4em">
+														<Text id="orderProductsColumnQuantityTextAllocationOrders1Shift"
+															wrapping="false"
+															textAlign="Right"
+															text="{Shift1}" />
+													</HBox>
+												</HBox>
+												<HBox height="1.25rem" width="8.4em"
+													id="orderProductsColumnQuantityHBoxAllocationOrders2Shift">
+													<HBox justifyContent="Start" width="3.5em">
+														<Label text="{i18n>stock_qty1}" class="sapUiSmallMarginBottom mob_txt" textAlign="Right"
+															labelFor="orderProductsColumnQuantityTextAllocationOrders2Shift" />
+													</HBox>
+													<HBox justifyContent="Start" width="3em">
+														<Text id="orderProductsColumnQuantityTextAllocationOrders2Shift"
+															wrapping="false"
+															textAlign="Right"
+															text="{Shift2}" />
+													</HBox>
+												</HBox>
+												
+												
+												<HBox height="1.25rem" width="10.4em"
+													id="orderProductsColumnQuantityHBoxAllocationOrders5Shift">
+													<HBox justifyContent="Start" width="3.5em">
+														<Label text="{i18n>remQty}" class="sapUiSmallMarginBottom mob_txt" textAlign="Right"
+															labelFor="orderProductsColumnQuantityTextAllocationOrders6Shift" />
+													</HBox>
+													<HBox justifyContent="Start" width="3em">
+														<Text id="orderProductsColumnQuantityTextAllocationOrders6Shift"
+															wrapping="false"
+															textAlign="Right"
+															text="{Shift3}" />
+													</HBox>
+												</HBox>
+												</VBox>	 -->
+												
+												
+											<HBox height="3rem" justifyContent="SpaceBetween"
+												id="disen">	
+											
+												
+												
+												<Input id="orderProductsInputOrderQuantityTablet" 
+												   value="{Confqty}"
+												   type="Number" 
+												   textAlign="Left"
+												   maxLength="4"
+												   change="checkwithQty"
+												   enabled="{Enabled}"
+												   editable="{Confind}"
+												  />
+												<!-- <ToggleButton icon="sap-icon://record" pressed="{Enabled}" press="onPressEdit" /> -->
+											<CheckBox  selected="{Enabled}"  enabled="{Confind}" />
+												  
+											</HBox>	  
+											<Select
+													id="lossTypeDesk" 
+													change="onValueChange"
+													selectedKey="{losstypee}"
+														items="{lossTObj}"
+														enabled="{Confind}">
+														<core:Item key="{Losstype}" text="{Losstype}" />
+													</Select>
+												<!-- <MultiComboBox id="multicomb" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish" width="500px"
+													items="{lossTObj}">
+													<core:Item key="{Losstype}" text="{Losstype}" />
+												</MultiComboBox> -->
+											 <Input id="loss_QtyDesk" 
+															 type="Number" 
+															 maxLength="8" 
+															 textAlign="Left"
+															 placeholder="Loss Qty" 
+															 value="{lossQty}"
+															  editable="{Confind}" />
+											 <Input id="remarksDesk" 
+															 type="Text" 
+															 textAlign="Left"
+															 placeholder="Comment"
+															 value="{Comment}"
+															  editable="{Confind}"/>
+											 <!-- maxLength="4" 
+												   showValueStateMessage="false"
+												   value=""
+												   width="4rem" 
+												   change="onOrderQuantityChange" 
+												   liveChange="onOrderQuantityLiveChange" --> 
+									
+										<!-- Cell content will be displayed in "smartphone" layout only -->
+								
+											<VBox id="orderProductsVBoxProductAttributes1" visible="{layoutStatus>/IsSmallLayout}"
+											height="7rem">
+												<!-- <Text id="wcmobile"
+													  text="{WorkCenter}"
+													  class="wcmobileclass" />
+												<Link text="{MaterialDescription}" class="mob_link" id="orderProductsTextProductName1" /> -->
+												<HBox justifyContent="Start" width="10.4em" height="3.7rem" class="margn">
+												<Text id="orderProductsColumnQuantityTextOrderQuantity"
+													  class="sapRTSTOrdProdLabelPromotionList"
+													  wrapping="false"
+													  text="{Material}" /></HBox>
+												<!-- <Text id="orderProductsTextPromotionLabel1"
+													  text="{Aufnr}" /> -->
+											    <!-- new field for mobile losstype -->
+											    	<!-- <ComboBox 
+															id="lossType" 
+															change="lossTypeChange"
+															showSecondaryValues= "true"
+															valueStateText="LossType"
+														    items="{
+																		path: '/results'
+																   }">
+														<core:ListItem key="{Losstype}" text="{Losstype}" additionalText = "{Losstype}"/>
+													</ComboBox> -->
+													<HBox justifyContent="Start" width="10.4em" height="3.7rem">
+												 <Input id="loss_Qty" 
+															 type="Number" 
+															 maxLength="8" 
+															 width="5rem"
+															 textAlign="Left"
+															 placeholder="Loss Qty" 
+															 value="{lossQty}"
+															 editable="{Confind}"  />	
+															 </HBox>
+											    <!-- end of new field -->
+												<!-- <Text id="orderProductsTextProductName" text="{prod_ordr}"/> -->
+											</VBox>
+											<VBox justifyContent="SpaceBetween"
+											height="6.4rem"
+												id="orderProductsVBoxProductQuantities">
+												
+												
+													<HBox justifyContent="Start" width="10.4em" height="3.7rem"  class="margn">
+														<Text id="orderProductsColumnQuantityTextAllocationOrders"
+														    class="mob_txt"
+															wrapping="false"
+															textAlign="Center"
+															text="{Planqty}" />
+													</HBox>
+											
+												<!-- <HBox height="1.25rem" width="9.4em"
+													id="orderProductsColumnQuantityHBoxAllocationOrders1">
+													<HBox justifyContent="Start" width="3.6em">
+														<Label text="Hours:" class="sapUiLargeMarginBottom mob_txt" textAlign="Right"
+															labelFor="orderProductsColumnQuantityTextAllocationOrders1" />
+													</HBox>
+													<HBox justifyContent="Start" width="3.4em">
+														<Text id="orderProductsColumnQuantityTextAllocationOrders1"
+															wrapping="false"
+															textAlign="Right"
+															text="8 Hrs" />
+													</HBox>
+												</HBox> -->
+												<!--  <HBox height="1.25rem" width="8.4em"
+													id="orderProductsColumnQuantityHBoxAllocationOrders2">
+													<HBox justifyContent="Start" width="3.5em">
+														<Label text="UOMS:" class="sapUiSmallMarginBottom mob_txt" textAlign="Right"
+															labelFor="orderProductsColumnQuantityTextAllocationOrders2" />
+													</HBox>
+													<HBox justifyContent="Start" width="3em">
+														<Text id="orderProductsColumnQuantityTextAllocationOrders2"
+															wrapping="false"
+															textAlign="Right"
+															text="{Uoms}" />
+													</HBox>
+												</HBox> -->
+												
+												
+												<!--<HBox height="1.25rem" width="10.4em"
+													id="orderProductsColumnQuantityHBoxAllocationOrders5">
+													<HBox justifyContent="Start" width="3.5em">
+														<Label text="{i18n>remQty}" class="sapUiSmallMarginBottom mob_txt" textAlign="Right"
+															labelFor="orderProductsColumnQuantityTextAllocationOrders6" />
+													</HBox>
+													<HBox justifyContent="Start" width="3em">
+														<Text id="orderProductsColumnQuantityTextAllocationOrders6"
+															wrapping="false"
+															textAlign="Right"
+															text="{Shift3}" />
+													</HBox> -->
+													
+												<!-- </HBox> -->
+												<HBox justifyContent="Start"  width="6rem"
+													  id="orderProductsHBoxUOMConversionLossQty">
+												<Select
+													id="lossType" 
+													change="onValueChange"
+													width="6.5rem"
+													selectedKey="{losstypee}"
+														items="{lossTObj}"
+														enabled="{Confind}">
+													<core:Item key="{Losstype}" text="{Losstype}" />
+													</Select>	
+													<!-- <MultiComboBox id="multicombMob" width="6.5rem" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish"
+													items="{lossTObj}">
+													<core:Item key="{Losstype}" text="{Losstype}" />
+												</MultiComboBox>	 -->
+													    
+												</HBox>
+												
+											</VBox>
+										
+										<!-- Cell content will be displayed in "smartphone" layout only -->
+											<VBox height="5rem" justifyContent="SpaceBetween" alignItems="Center"
+												id="prod_Qty_Vbox">
+											<!-- 	<HBox  id="orderProductsHBoxUOMConversion0008" justifyContent="Start" height="1.50rem">
+												  <CheckBox text="" selected="true" id="ijkmob"/>
+												</HBox> -->
+												
+												<HBox justifyContent="Start" height="5.7rem"
+													  id="orderProductsHBoxUOMConversion3">
+													
+													  <Input id="prod_Qty" 
+													  		 value="{Confqty}"
+															 type="Number" 
+															 textAlign="Left"
+															 maxLength="5" 
+															 width="5.3rem"
+															  change="checkwithQty" 
+															 enabled="{Enabled}"
+															 editable="{Confind}"/>
+													<!-- <ToggleButton icon="sap-icon://record" pressed="{Enabled}" press="onPressEdit" /> -->
+												<CheckBox  selected="{Enabled}"  enabled="{Confind}"  />
+												</HBox>
+												
+												<HBox justifyContent="Start" height="1.50rem"
+													  id="orderProductsHBoxUOMConversionRemarks">
+													  <Input id="remarks" 
+															 type="Text" 
+															 textAlign="Left"
+															 placeholder="Comment"
+															 value="{Comment}"
+															 editable="{Confind}"/>
+												</HBox>
+												          
+											</VBox>
+									</cells>
+								</ColumnListItem>
+							</items>
+							</Table>
+						</content>
+						<footer>
+		      			<Bar>
+					        <contentRight>
+					           <Button type="Accept" text="{i18n>cnfrm}" press="handleSubmit" />
+					        </contentRight>
+					   </Bar>
+		   		</footer>
+	</Page>
+</core:View>
