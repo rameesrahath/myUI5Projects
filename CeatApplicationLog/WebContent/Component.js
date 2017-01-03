@@ -107,8 +107,6 @@ sap.ui.define([
 			}},
 		createContent : function() {
 
-			
-			
 			// create root view
 			this.mView = sap.ui.view({
 				id : "app",
