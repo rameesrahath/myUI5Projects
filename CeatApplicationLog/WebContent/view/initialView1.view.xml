@@ -1,0 +1,74 @@
+<mvc:View 
+		 xmlns:html="http://www.w3.org/1999/xhtml" 
+		 xmlns:mvc="sap.ui.core.mvc" 
+		 xmlns="sap.m" 
+		 xmlns:c="sap.ui.core"
+		 xmlns:f="sap.ui.layout.form"
+		 controllerName="com.ceat.log.controller.initialView1">
+
+			<Page title="{i18n>logbookInitialScreenTitle}" showFooter="true">
+				<content>
+				   <!--  <ObjectHeader id="plantDateObjHeader" backgroundDesign="Transparent" icon="sap-icon://factory" titleSelectorTooltip="" tooltip="Plant Info" introTextDirection="LTR" title="Bhandup Mfg. Plant" intro="23/06/2016" fullScreenOptimized="true" condensed="true" responsive="true" iconAlt="sap-icon://factory"/> -->
+				    <f:SimpleForm 
+				    			layout="ResponsiveGridLayout" 
+				    			id="__form1" 
+				    			backgroundDesign="Solid" 
+				    			editable="true" 
+				    			emptySpanL="3" 
+				    			emptySpanM="3" 
+				    			labelSpanL="3" 
+				    			labelSpanM="3" 
+				    			minWidth="1024" 
+				    			width="100%">
+						        <f:content>
+						              <c:Title id="initialForm" level="H4" icon="sap-icon://activity-items" text="Selection Crieteria"/>
+						              
+						              <Label text="Date" />
+						              <DatePicker width="100%" id="DP1" secondaryCalendarType="Gregorian"  placeholder="From"/>
+						              <DatePicker width="100%" id="DP2" secondaryCalendarType="Gregorian"  placeholder="To"/>
+						             <!--  <Label text="Created By" />
+						              <Input width="100%" id="inpt_createdBy"  placeholder="User"/> -->
+						          	  <Label text="Application Type" />
+						              <ComboBox 
+						              id="cmbBox"
+						              		   selectionChange="appType_change"
+						              		   items="{
+															path: 'appType>/results',
+															sorter: { path: 'Atext' }
+													  }">
+											   <c:Item key="{appType>Atype}" text="{appType>Atext}" />
+						            </ComboBox>
+						            
+						           <!-- Production Order Confirmation -->
+						           
+						            <Label text="Department" id="lblDept" visible="false"/>
+						              <ComboBox  visible="false"
+						              id="cmbBoxDept"
+						              		   selectionChange="Dept_change"
+						              		   items="{
+															path: 'appDept>/results'
+															
+													  }">
+											   <c:Item key="{appDept>Stand}" text="{appDept>Ktext}" />
+						            </ComboBox>
+						            
+						            
+						            <Label visible="false" text="Order Number" id="lblOrderNo"/>
+						            <Input width="100%"  id="inpt_ordr1"  placeholder="From" maxLength="12" type="Number" visible="false"
+						           />
+						            <Input width="100%" maxLength="12" type="Number" id="inpt_ordr2" placeholder="To" visible="false"/>
+						            
+						            <!-- Production Order Confirmation -->
+						        </f:content>
+				    </f:SimpleForm>
+				</content>
+				<footer>
+	      			<Bar design="Footer">
+				        <contentRight>
+				           <Button id="submitinitial" type="Accept" text="{i18n>submit}" press="onLogbookViewPress" icon="sap-icon://activity-2" activeIcon="sap-icon://activity-2"/>
+				        </contentRight>
+				   </Bar>
+	   		</footer>
+			</Page>
+		
+</mvc:View>

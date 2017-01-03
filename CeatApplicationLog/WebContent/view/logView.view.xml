@@ -1,0 +1,256 @@
+<core:View 
+		  xmlns:core="sap.ui.core" 
+		  xmlns:mvc="sap.ui.core.mvc" 
+		  xmlns="sap.m" 
+		  xmlns:html="http://www.w3.org/1999/xhtml" 
+		  xmlns:layout="sap.ui.layout" 
+		  controllerName="com.ceat.log.controller.logView"
+		  xmlns:cl="sap.ui.commons.layout">
+	
+	<Page title="{i18n>logbookInitialScreenTitle}" showFooter="true" showNavButton="true" navButtonPress="onBackButtonPress">
+	<content>
+					
+<Table id="idProductsTable"
+		inset="false"
+		items="{
+			path: '/results',
+			sorter: {
+				path: ''
+			}
+		}"
+		growing="true" growingThreshold="10" growingScrollToLoad="true" >
+		<headerToolbar>
+			<Toolbar>
+				<Title id="tableTitle"  level="H2"/>
+			</Toolbar>
+		</headerToolbar>
+		<columns>
+			
+						<!-- Table Header For Desktop -->
+						
+			<Column hAlign="Center" visible="{layoutStatus>/IsLargeLayout}">
+				<Text text="Order Number" />
+			</Column>
+			<Column hAlign="Center" visible="{layoutStatus>/IsLargeLayout}">
+				<Text text="Created By" />
+			</Column>
+			<Column hAlign="Center" visible="{layoutStatus>/IsLargeLayout}">
+				<Text text="Date" />
+			</Column>
+			<Column hAlign="Center"  visible="{layoutStatus>/IsLargeLayout}">
+				<Text text="Time" />
+			</Column>
+			<Column hAlign="Center" visible="{layoutStatus>/IsLargeLayout}">
+				<Text text="Status" />
+			</Column>
+			<Column hAlign="Center"   visible="{layoutStatus>/IsLargeLayout}">
+				<Text text="Plant" />
+			</Column>
+			<Column hAlign="Center"  visible="{layoutStatus>/IsLargeLayout}">
+				<Text text="Shift" />
+			</Column>
+			<Column hAlign="Center" visible="{layoutStatus>/IsLargeLayout}">
+				<Text text="Storage Location" />
+			</Column>
+			<Column hAlign="Center" visible="{layoutStatus>/IsLargeLayout}">
+				<Text text="Department" />
+			</Column>
+			<Column hAlign="Center"  visible="{layoutStatus>/IsLargeLayout}">
+				<Text text="Work Center" />
+			</Column>
+			<Column hAlign="Center"  width="12em"  visible="{layoutStatus>/IsLargeLayout}">
+				<Text text="Message Text" />
+			</Column>
+			
+						<!-- Table Header For Mobile -->
+						
+			<Column hAlign="Center" width="60%" class="mob1" visible="{layoutStatus>/IsSmallLayout}" >
+				<Text text="Order Details" />
+			</Column>
+			<!-- <Column hAlign="Center" width="10em" visible="{layoutStatus>/IsSmallLayout}" >
+				<Text text="Pieces" />
+			</Column> -->
+			<Column hAlign="Center" width="40%" visible="{layoutStatus>/IsSmallLayout}">
+				<Text text="Message" />
+			</Column>
+			
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+									<!-- Table Cells For Desktop -->
+									
+						<Text text="{Aufnr}" visible="{layoutStatus>/IsLargeLayout}" />
+						<Text text="{Cname}" visible="{layoutStatus>/IsLargeLayout}" />
+						<Text text="{path:'Mdate',
+									formatter:'com.ceat.log.util.Formatter.logBookDate'}" visible="{layoutStatus>/IsLargeLayout}" />
+						<Text text="{path:'Mtime',
+									formatter:'com.ceat.log.util.Formatter.TimeFormat'}" visible="{layoutStatus>/IsLargeLayout}" />
+						<ObjectNumber
+									number="{Stats}"
+									state="{
+										path: 'Stats',
+										formatter: 'com.ceat.log.util.Formatter.orderState'
+									}"
+									visible="{layoutStatus>/IsLargeLayout}" />
+						<Text text="{Werks}" visible="{layoutStatus>/IsLargeLayout}" />
+						<Text text="{Shift}" visible="{layoutStatus>/IsLargeLayout}" />
+						<Text text="{Lgort}" visible="{layoutStatus>/IsLargeLayout}" />
+						<Text text="{Stand}" visible="{layoutStatus>/IsLargeLayout}" />
+						<Text text="{Arbpl}" visible="{layoutStatus>/IsLargeLayout}" />
+						<Text text="{Msgtxt}" visible="{layoutStatus>/IsLargeLayout}" />
+						
+									<!-- Table Cells For Mobile -->
+						<!-- <VBox id="orderProductsVBoxProductAttributes1" visible="{layoutStatus>/IsSmallLayout}">
+							<Text text="{orderNo}" />
+							<ObjectNumber
+									class="cl_status"
+									number="{Stats}"
+									state="{
+										path: 'Stats',
+										formatter: 'com.ceat.log.util.Formatter.orderState'
+									}" />
+							<Text text="{Werks}" />
+							<Text text="{Lgort}" />
+							<Text text="{Stand}" />
+							<Text text="{Arbpl}" />
+						</VBox> -->
+						<cl:MatrixLayout columns="6" direction="inherit" visible="{layoutStatus>/IsSmallLayout}">
+								<cl:MatrixLayoutRow>
+									<cl:MatrixLayoutCell padding="Begin" class="c1">	
+					          			<Label class="overFlow" text="Order No" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin" class="c2">	
+					          			<Label class="overFlow" text=":" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin" class="c3">	
+					          			<Label class="overFlow" text="{Aufnr}" />
+					          		</cl:MatrixLayoutCell>
+					          	</cl:MatrixLayoutRow>
+								<!-- <cl:MatrixLayoutRow>
+									<cl:MatrixLayoutCell padding="Begin" class="c1">	
+					          			<Label class="overFlow" text="Created" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin" class="c2">	
+					          			<Label class="overFlow" text=":" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin" class="c3">	
+					          			<Label class="overFlow" text="{Cname}" />
+					          		</cl:MatrixLayoutCell>
+					          	</cl:MatrixLayoutRow>
+					          	<cl:MatrixLayoutRow>
+									<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text="Date" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text=":" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text="{path:'Mdate',
+									formatter:'com.ceat.log.util.Formatter.logBookDate'}" />
+					          		</cl:MatrixLayoutCell>
+					          	</cl:MatrixLayoutRow>
+					          	<cl:MatrixLayoutRow>
+									<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text="Time" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text=":" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text="{path:'Mtime',
+									formatter:'com.ceat.log.util.Formatter.TimeFormat'}" />
+					          		</cl:MatrixLayoutCell>
+					          	</cl:MatrixLayoutRow> -->
+					          		<cl:MatrixLayoutRow>
+									<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text="Plant" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text=":" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text="{Werks}" />
+					          		</cl:MatrixLayoutCell>
+					          	</cl:MatrixLayoutRow>
+					          		<cl:MatrixLayoutRow>
+									<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text="WorkCenter" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text=":" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text="{Arbpl}" />
+					          		</cl:MatrixLayoutCell>
+					          	</cl:MatrixLayoutRow>
+					          	<cl:MatrixLayoutRow>
+									<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text="Shift" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text=":" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text="{Shift}" />
+					          		</cl:MatrixLayoutCell>
+					          	</cl:MatrixLayoutRow>
+					          	<cl:MatrixLayoutRow>
+									<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text="Location" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text=":" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text="{Lgort}" />
+					          		</cl:MatrixLayoutCell>
+					          	</cl:MatrixLayoutRow>
+					          	<cl:MatrixLayoutRow>
+									<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text="Department" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text=":" />
+					          		</cl:MatrixLayoutCell>
+					          		<cl:MatrixLayoutCell padding="Begin">	
+					          			<Label class="overFlow" text="{Stand}" />
+					          		</cl:MatrixLayoutCell>
+					          	</cl:MatrixLayoutRow>
+					   </cl:MatrixLayout>
+					   <VBox id="orderProductsVBoxProductAttributes1" visible="{layoutStatus>/IsSmallLayout}">
+					   <Text class="overFlow" text="{Cname}" />
+					   <Text class="overFlow" text="{path:'Mdate',
+									formatter:'com.ceat.log.util.Formatter.logBookDate'}" />
+						<Text class="overFlow" text="{path:'Mtime',
+									formatter:'com.ceat.log.util.Formatter.TimeFormat'}" />
+					   <ObjectNumber
+									class="cl_status"
+									number="{Stats}"
+									state="{
+										path: 'Stats',
+										formatter: 'com.ceat.log.util.Formatter.orderState'
+									}" />
+									
+					   <Text text="{Msgtxt}" visible="{layoutStatus>/IsSmallLayout}" />
+					   </VBox>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+
+	</content>
+	
+	
+			<footer>
+	      			<Bar design="Footer">
+				        <contentRight>
+				           <Button id="logDownloadExcel" tooltip="Download as Excel" press="onExcelDownload" icon="sap-icon://download" activeIcon="sap-icon://download"/>
+				        </contentRight>
+				   </Bar>
+	   		</footer>				
+</Page>	
+				
+		
+					
+</core:View>
